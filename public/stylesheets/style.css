@@ -1,0 +1,122 @@
+/* index */
+.nav-project-title,
+.nav-btn {
+  font-weight: 600;
+}
+.sort select {
+  text-align: center;
+  width: 20rem;
+}
+.total-amount {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.total-amount-title {
+  width: 12%;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-right: 1rem;
+}
+.total-amount-cost {
+  width: 30%;
+  color: salmon;
+  font-size: 4rem;
+}
+.item {
+  position: relative;
+}
+.item-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(231, 231, 231);
+  width: 350px;
+}
+.item-icon {
+  color: rgba(0, 255, 255, 0.492);
+  align-self: center;
+}
+.item-detail {
+  width: 15rem;
+  
+}
+.item-title {
+  font-size: 1.2rem;
+  font-weight: 550;
+}
+.item-cost {
+  align-self: center;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+}
+.item-btns {
+  margin: auto 0 auto 2rem;
+}
+.item-btn {
+ text-decoration: none;
+ color: darkslateblue;
+ font-size: 1.2rem;
+ font-weight: 600;
+ margin: 0 5px;
+}
+.create-expsense {
+  background-color: salmon;
+  color: lightgray;
+}
+
+/* new */
+.new-wrapper {
+  display: grid;
+  grid-template-columns: 10rem 20rem;
+  grid-template-rows: repeat(6, 4rem);
+  grid-template-areas:
+  "item1 item2"
+  "item3 item4"
+  "item5 item6"
+  "item7 item8"
+  "item9 item10"
+  "item11 item12";
+  grid-gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+}
+.grid-1 {
+  grid-area: item1;
+}
+.grid-2 {
+  grid-area: item2;
+  font-size: 2rem;
+}
+.grid-3 {
+  grid-area: item3;
+}
+.grid-4 {
+  grid-area: item4;
+}
+.grid-5 {
+  grid-area: item5;
+}
+.grid-6 {
+  grid-area: item6;
+}
+.grid-7 {
+  grid-area: item7;
+}
+.grid-8 {
+  grid-area: item8;
+}
+.grid-9 {
+  grid-area: item9;
+}
+.grid-10 {
+  grid-area: item10;
+}
+.grid-11 {
+  grid-area: item11;
+}
+.grid-12 {
+  grid-area: item12;
+}

@@ -1,0 +1,33 @@
+<div class="container">
+  <form action="/expenses/{{expense._id}}?_method=PUT" method="POST" class="new-wrapper">
+    <div class="grid-1">*必填欄位</div>
+    <div class="grid-2">修改支出</div>
+    <div class="grid-3">名稱*</div>
+    <div class="grid-4">
+      <input type="text" name="name" value="{{expense.name}}" required>
+    </div>
+    <div class="grid-5">日期*</div>
+    <div class="grid-6">
+      <input type="date" name="date" value="{{expense.date}}" required>
+    </div>
+    <div class="grid-7">類別*</div>
+    <div class="grid-8">
+      <select name="categoryId" id="categoryId" required>
+        <option value="" disabled selected>類別</option>
+        <option value="1" {{#if category.rent}} selected {{/if}}>家居物業</option>
+        <option value="2" {{#if category.cars}} selected {{/if}}>交通出行</option>
+        <option value="3" {{#if category.fun}} selected {{/if}}>休閒娛樂</option>
+        <option value="4" {{#if category.food}} selected {{/if}}>餐飲食品</option>
+        <option value="5" {{#if category.other}} selected {{/if}}>其他</option>
+      </select>
+    </div>
+    <div class="grid-9">金額*</div>
+    <div class="grid-10">
+      <input type="text" name="amount" value="{{expense.amount}}" required>
+    </div>
+    <div class="grid-11"></div>
+    <div class="grid-12">
+      <button type="submit" class="btn btn-primary">送出</button>
+    </div>
+  </form>
+</div>

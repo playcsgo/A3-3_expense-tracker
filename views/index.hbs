@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="sort text-center">
+    <select name="form-select" id="sort" name="sort" onchange="this.form.submit()" class="form-select-lg m-3">
+      <option value="">類別</option>
+      <option value="">家居物業</option>
+      <option value="">交通出行</option>
+      <option value="">休閒娛樂</option>
+      <option value="">餐飲食品</option>
+      <option value="">其他</option>
+    </select>
+  </div>
+  <div class="total-amount text-center">
+    <div class="total-amount-title">總經額:</div>
+    <div class="total-amount-cost">{{totalAmount}}</div>
+  </div>
+  <div class="items m-3">
+    <ul>
+      {{#each expenses}}
+      <li class="d-flex justify-content-center item">
+        <div class="item-info">
+          {{#if this.food}}
+          <i class="fa-solid fa-utensils fa-2x item-icon m-1"></i>
+          {{/if}}
+          {{#if this.rent}}
+          <i class="fa-solid fa-house fa-2x item-icon m-1"></i>
+          {{/if}}
+          {{#if this.cars}}
+          <i class="fa-solid fa-van-shuttle fa-2x item-icon m-1"></i>
+          {{/if}}
+          {{#if this.fun}}
+          <i class="fa-solid fa-face-grin-beam fa-2x item-icon m-1"></i>
+          {{/if}}
+          {{#if this.other}}
+          <i class="fa-solid fa-pen fa-2x item-icon m-1"></i>
+          {{/if}}
+          <div class="item-detail">
+            <div class="item-title">{{ this.name }}</div>
+            <div class="item-date">{{ this.date }}</div>
+          </div>
+          <div class="item-cost">{{ this.amount }}</div>
+        </div>
+        <div class="item-btns">
+          <a href="/expenses/{{this._id}}/edit" class="item-btn">修改</a>
+          <a href="/expenses/{{this._id}}/delete" class="item-btn">刪除</a>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="text-center mt-4">
+    <a href="/expenses/new" class="btn btn-outline-primary create-expsense">新增支出</a>
+  </div>
+</div>
