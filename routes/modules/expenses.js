@@ -9,6 +9,7 @@ router.get('/new', (req, res) => {
 
 // Create - 2
 router.post('/create', (req, res) => {
+  req.body.userId = req.user._id
   Record.create(req.body)
     .then(() => {
       res.redirect('/')
@@ -54,6 +55,8 @@ router.get('/:id/edit', (req, res) => {
 // Update-2
 router.put('/:id', (req, res) => {
   const id = req.params.id
+  const userId = req.user._id
+  req.body.userId = userId
   Record.findByIdAndUpdate(id, req.body)
     .then(() => {
       res.redirect('/')
@@ -65,6 +68,7 @@ router.put('/:id', (req, res) => {
 // Delete
 router.get('/:id/delete', (req, res) => {
   const id = req.params.id
+  const userId = req.user._id
   Record.findByIdAndDelete(id)
     .then(() => {
       res.redirect('/')
