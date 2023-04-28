@@ -84,29 +84,30 @@ const SEED_EXPENSE2 = [
 ]
 
 db.once('open',async () => {
-  await Promise.all(SEED_USER.map(user => {
-    bcrypt
-      .genSalt(10)
-      .then(salt => bcrypt.hash(user.password, salt))
-      .then(hash => User.create({
+  try{
+    for (const user of SEED_USER) {
+      const salt = await bcrypt.genSalt(10)
+      const hash = await bcrypt.hash(user.password, salt)
+      const createdUser = await User.create({
         name: user.name,
         email: user.email,
         password: hash
-      }))
-      .then(user => {
-        if (user.name === "user1") {
-          SEED_EXPENSE1.forEach(expense => {
-            expense.userId = user._id
-            Record.create(expense)
-          })
-        } else if (user.name === "user2") {
-          SEED_EXPENSE2.forEach(expense => {
-            expense.userId = user._id
-            Record.create(expense)
-          })
-        }
       })
-  }))
+      if (createdUser.name === 'user1') {
+        for (const expense of SEED_EXPENSE1) {
+          expense.userId = createdUser._id
+          await Record.create(expense)
+        }
+      } else if (createdUser.name === 'user2') {
+        for (const expense of SEED_EXPENSE2) {
+          expense.userId = createdUser._id
+          await Record.create(expense)
+        }
+      }
+    }
+  } catch (err) {
+    console.log(err)
+  }
   console.log('done')
-  //不會 async
+  process.exit()
 })
