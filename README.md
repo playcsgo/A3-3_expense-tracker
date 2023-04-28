@@ -13,9 +13,6 @@ A3: 老爸的私房錢
 
 使用套件
 -----
-- 可直接複製以下列表到package.json
-- $npm update
-
 "bcryptjs": "^2.4.3",
 "connect-flash": "^0.1.1",
 "express": "^4.18.2",
@@ -27,6 +24,8 @@ A3: 老爸的私房錢
 "passport-facebook": "^3.0.0",
 "passport-local": "^1.0.0"
 
+- 專案中有package.json, 可使用 npm update 快速安裝/更新套件
+- $ npm update
 
 安裝方式
 ----

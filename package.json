@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "Procfile": "web: node app.js",
     "start": "node app.js",
     "dev": "nodemon app.js",
     "seed": "node models/seeds/recordSeed.js",
