@@ -18,19 +18,19 @@
       {{#each expenses}}
       <li class="d-flex justify-content-center item">
         <div class="item-info">
-          {{#if this.food}}
-          <i class="fa-solid fa-utensils fa-2x item-icon m-1"></i>
-          {{/if}}
-          {{#if this.rent}}
+          {{#if (eq this.categoryId 1)}}
           <i class="fa-solid fa-house fa-2x item-icon m-1"></i>
           {{/if}}
-          {{#if this.cars}}
+          {{#if (eq this.categoryId 2)}}
           <i class="fa-solid fa-van-shuttle fa-2x item-icon"></i>
           {{/if}}
-          {{#if this.fun}}
+          {{#if (eq this.categoryId 3)}}
           <i class="fa-solid fa-face-grin-beam fa-2x item-icon m-1"></i>
           {{/if}}
-          {{#if this.other}}
+          {{#if (eq this.categoryId 4)}}
+          <i class="fa-solid fa-utensils fa-2x item-icon m-1"></i>
+          {{/if}}
+          {{#if (eq this.categoryId 5)}}
           <i class="fa-solid fa-pen fa-2x item-icon m-1"></i>
           {{/if}}
           <div class="item-detail">

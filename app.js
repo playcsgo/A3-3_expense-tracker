@@ -9,8 +9,12 @@ const flash = require('connect-flash')
 require('dotenv').config()
 const PORT = process.env.PORT || 3000
 require('./config/mongoose')
+
 app.use(express.static('public'))
-app.engine('hbs', exphbs.engine({defaultLayout: 'main', extname: 'hbs'}))
+
+const hbsHelper = require('./hbs-Helper')
+app.engine('hbs', exphbs.engine({defaultLayout: 'main', extname: 'hbs', helpers: hbsHelper}))
+
 
 app.use(session({
   secret: 'MySecret',
