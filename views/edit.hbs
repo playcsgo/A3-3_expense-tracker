@@ -14,11 +14,11 @@
     <div class="grid-8">
       <select name="categoryId" id="categoryId" required>
         <option value="" disabled selected>類別</option>
-        <option value="1" {{#if category.rent}} selected {{/if}}>家居物業</option>
-        <option value="2" {{#if category.cars}} selected {{/if}}>交通出行</option>
-        <option value="3" {{#if category.fun}} selected {{/if}}>休閒娛樂</option>
-        <option value="4" {{#if category.food}} selected {{/if}}>餐飲食品</option>
-        <option value="5" {{#if category.other}} selected {{/if}}>其他</option>
+        <option value="1" {{#if (eq expense.categoryId 1)}} selected {{/if}}>家居物業</option>
+        <option value="2" {{#if (eq expense.categoryId 2)}} selected {{/if}}>交通出行</option>
+        <option value="3" {{#if (eq expense.categoryId 3)}} selected {{/if}}>休閒娛樂</option>
+        <option value="4" {{#if (eq expense.categoryId 4)}} selected {{/if}}>餐飲食品</option>
+        <option value="5" {{#if (eq expense.categoryId 5)}} selected {{/if}}>其他</option>
       </select>
     </div>
     <div class="grid-9">金額*</div>

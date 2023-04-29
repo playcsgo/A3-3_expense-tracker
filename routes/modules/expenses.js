@@ -24,31 +24,31 @@ router.get('/:id/edit', (req, res) => {
     .lean()
     .then(expense => {
       expense.date = expense.date.toISOString().split('T')[0]
-      const category = {
-        rent: false,
-        cars: false,
-        fun: false,
-        food: false,
-        other: false
-      }
-      switch (expense.categoryId) {
-        case 1:
-          category.rent = true;
-          break
-        case 2:
-          category.cars = true;
-          break  
-        case 3:
-          category.fun = true;
-          break
-        case 4:
-          category.food = true;
-          break
-        case 5:
-          category.other = true;
-          break  
-      }
-      res.render('edit', { expense, category })
+      // const category = {
+      //   rent: false,
+      //   cars: false,
+      //   fun: false,
+      //   food: false,
+      //   other: false
+      // }
+      // switch (expense.categoryId) {
+      //   case 1:
+      //     category.rent = true;
+      //     break
+      //   case 2:
+      //     category.cars = true;
+      //     break  
+      //   case 3:
+      //     category.fun = true;
+      //     break
+      //   case 4:
+      //     category.food = true;
+      //     break
+      //   case 5:
+      //     category.other = true;
+      //     break  
+      // }
+      res.render('edit', { expense })
     })
 })
 
