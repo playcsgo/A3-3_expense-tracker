@@ -17,12 +17,12 @@ router.get('/new', (req, res) => {
 // Create - 2
 router.post('/create', [
   body('amount').isNumeric().withMessage('numbers only'),
-  body('').isLength(30).withMessage('input too long'),
+  body('name').isLength({min:0, max: 20}).withMessage('input too long'),
   body('date').isDate().withMessage('unacceptable date format')
 ],(req, res) => {
   const bodyError = validationResult(req)
-  if (bodyError) {
-    console.log(bodyError)
+  if (bodyError.errors.length) {
+    console.log(bodyError.errors)
     errorCount ++
     console.log('1', errorCount)
     if (errorCount >= 3) {
@@ -83,7 +83,30 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // Update-2
-router.put('/:id', (req, res) => {
+router.put('/:id', [
+  body('amount').isNumeric().withMessage('numbers only'),
+  body('name').isLength({min:0, max: 20}).withMessage('input too long'),
+  body('date').isDate().withMessage('unacceptable date format')
+], (req, res) => {
+  const bodyError = validationResult(req)
+  if (bodyError.errors.length) {
+    console.log(bodyError.errors)
+    errorCount ++
+    console.log('1', errorCount)
+    if (errorCount >= 3) {
+      isBlocked = true
+      console.log('2', isBlocked);
+      if (isBlocked) {
+        setTimeout(function reset() {
+          isBlocked = false
+          console.log('3', 'resetted')
+        }, 10000)
+        return res.status(429).send('server down')
+      }
+    }
+    return res.redirect('new')
+  }
+
   const id = req.params.id
   const userId = req.user._id
   req.body.userId = userId

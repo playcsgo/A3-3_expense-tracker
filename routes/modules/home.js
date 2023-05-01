@@ -2,6 +2,25 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../../models/record')
 
+router.get('/sort', (req, res) => {
+  const userId = req.user._id
+  const selectedCategoryId = Number(req.query.sort)
+  if (selectedCategoryId === 6) {
+    return res.redirect('/')
+  }
+  Record.find({ userId, categoryId: selectedCategoryId })
+    .lean()
+    .then(expenses => {
+      let totalAmount = 0
+      expenses.forEach(expense => {
+        totalAmount += expense.amount
+        expense.date = expense.date.toISOString().split('T')[0].replace(/-/g, '/')
+      })
+      console.log(selectedCategoryId)
+      res.render('index',{ expenses, totalAmount, selectedCategoryId })
+    })
+    .catch(err => console.log(err))
+})
 
 router.get('/', (req, res) => {
   const userId = req.user._id
@@ -12,23 +31,6 @@ router.get('/', (req, res) => {
       expenses.forEach(expense => {
         totalAmount += expense.amount
         expense.date = expense.date.toISOString().split('T')[0].replace(/-/g, '/')
-        // switch (expense.categoryId) {
-        //   case 1:
-        //     expense.rent = true;
-        //     break
-        //   case 2:
-        //     expense.cars = true;
-        //     break  
-        //   case 3:
-        //     expense.fun = true;
-        //     break
-        //   case 4:
-        //     expense.food = true;
-        //     break
-        //   case 5:
-        //     expense.other = true;
-        //     break  
-        // }
       })
       res.render('index',{ expenses, totalAmount })
     })
